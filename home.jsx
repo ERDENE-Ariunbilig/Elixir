@@ -97,7 +97,7 @@ function Main() {
             setLoading(false);
             // Allow scrolling after loading is complete
             document.body.classList.remove('loading');
-        }, 3000); // Keep loading for 5 seconds
+        }, 3000); // loading 3 second yag tarsan
 
         // Add class to hide scrollbars while loading
         document.body.classList.add('loading');
