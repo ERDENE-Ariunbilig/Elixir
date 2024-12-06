@@ -8,9 +8,11 @@
     <title>ELIXIR</title>
 
     <!-- React and Babel -->
-    <script src="https://unpkg.com/react/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Make sure Tailwind loads after React -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Custom Google Fonts -->
@@ -29,7 +31,7 @@
     <!-- React Root Container -->
     <div id="root"></div>
 
-    <script type="text/babel" src="home.jsx"></script>
+    <script type="text/babel" data-type="module" src="home.jsx"></script>
 
     
 </body>
