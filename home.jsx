@@ -69,8 +69,8 @@ function App() {
                     WE'RE A GROUP OF YOUNG PEOPLE STARTING OUR OWN CLOTHING BRAND /STARTING FROM THE BOTTOM/
                 </div>
                 <div className="mt-8 text-center max-w-md shadows-into-light custom-text">
-    COMING SOON
-</div>
+                    COMING SOON
+                </div>
 
             </main>
 
