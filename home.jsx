@@ -1,5 +1,4 @@
 const { useState, useEffect } = React;
-
 const artists = ["RARI", "EMURACS", "SITAN", "SANDAN", "BELLATTIX", "AKMET"];
 
 function LoadingScreen() {
