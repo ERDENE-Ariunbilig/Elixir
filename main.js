@@ -4,22 +4,22 @@ const musicContent = [
         title: "Emira - CHI",
         thumbnail: `https://img.youtube.com/vi/fk3m10VDf8A/hqdefault.jpg`,
         youtubeLink: "https://youtu.be/fk3m10VDf8A",
-        description: "First song description here",
-        releaseDate: "Release date here"
+        description: "description...",
+        releaseDate: "Release date"
     },
     {
         title: "Emira - Setgel",
         thumbnail: `https://img.youtube.com/vi/hgVXBWVm824/hqdefault.jpg`,
         youtubeLink: "https://youtu.be/hgVXBWVm824",
-        description: "Second song description here",
-        releaseDate: "Release date here"
+        description: "description...",
+        releaseDate: "Release date"
     },
     {
         title: "Emira - 7AM",
         thumbnail: `https://img.youtube.com/vi/2giSYHljK3Q/hqdefault.jpg`,
         youtubeLink: "https://youtu.be/2giSYHljK3Q",
-        description: "Third song description here",
-        releaseDate: "Release date here"
+        description: "description...",
+        releaseDate: "Release date"
     }
 ];
 
