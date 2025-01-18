@@ -2,24 +2,22 @@
 :root {
     --bg-color-light: #ffffff;
     --text-color-light: #000000;
-
     --bg-color-dark: #111111;
     --text-color-dark: #ffffff;
 }
 
-/* Light mode (default) */
+/* Light/Dark mode themes */
 html {
     background-color: var(--bg-color-light);
     color: var(--text-color-light);
 }
 
-/* Dark mode */
 html.dark {
     background-color: var(--bg-color-dark);
     color: var(--text-color-dark);
 }
 
-/* General body and html */
+/* General layout */
 body, html {
     margin: 0;
     padding: 0;
@@ -27,67 +25,50 @@ body, html {
     height: 100%;
     font-family: 'Doto', sans-serif;
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    overflow: auto; /* Ensure scrolling */
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
     flex-direction: column;
 }
 
-/* Ensure root container is centered */
 #root {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center; /* Center text */
-}
-
-
-.loading-screen {
     text-align: center;
-    font-size: 3rem;
-    font-weight: bold;
-    font-family: 'Shadows Into Light', cursive;
-    position: relative;
+    width: 100%;
 }
 
-/* Hide scrollbars while loading */
-body.loading {
-    overflow: hidden;
-}
-
-/* Loading screen styling */
+/* Loading screen */
 .loading-screen {
-    position: absolute; /* Center on the screen */
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 3rem;
     font-weight: bold;
     font-family: 'Shadows Into Light', cursive;
-    color: white;
+    color: var(--text-color-dark);
 }
 
+body.loading {
+    overflow: hidden;
+}
 
+/* Text animation */
 .moving-text span {
     display: inline-block;
-    animation: move 3s infinite;
+    animation: move 3s ease-in-out infinite;
 }
 
-/* Keyframe animations effects */
 @keyframes move {
     0% { transform: translateX(0); opacity: 1; }
     50% { transform: translateX(20px); opacity: 1; }
     100% { transform: translateX(0); opacity: 1; }
 }
 
-/* Animation letter */
-.moving-text span {
-    display: inline-block;
-    animation: move 3s ease-in-out infinite;
-}
-
-/* animation delay */
+/* Animation delays for each letter */
 .moving-text span:nth-child(1) { animation-delay: 0s; }
 .moving-text span:nth-child(2) { animation-delay: 0.2s; }
 .moving-text span:nth-child(3) { animation-delay: 0.4s; }
@@ -95,6 +76,7 @@ body.loading {
 .moving-text span:nth-child(5) { animation-delay: 0.8s; }
 .moving-text span:nth-child(6) { animation-delay: 1s; }
 
+/* Responsive text sizes */
 .text-9xl {
     font-size: 6rem;
 }
@@ -111,6 +93,7 @@ body.loading {
     }
 }
 
+/* Font families */
 .protest-revolution {
     font-family: 'Protest Revolution', sans-serif;
 }
@@ -130,4 +113,4 @@ footer {
 .custom-text {
     font-size: 2rem;
     color: grey;
-}
+} 
