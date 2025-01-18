@@ -27,7 +27,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: auto;
+    overflow: hidden;
     flex-direction: column;
 }
 
@@ -113,4 +113,669 @@ footer {
 .custom-text {
     font-size: 2rem;
     color: grey;
-} 
+}
+
+.logo-text {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.logo-text:hover {
+    opacity: 0.8;
+}
+
+.header-line {
+    width: 100%;
+    border: none;
+    height: 1px;
+    background-color: var(--text-color-dark);
+    margin: 0;
+    opacity: 0.3;
+}
+
+html.dark .header-line {
+    background-color: var(--text-color-dark);
+}
+
+html:not(.dark) .header-line {
+    background-color: var(--text-color-light);
+}
+
+.header-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--text-color-dark) 20%,
+        var(--text-color-dark) 80%,
+        transparent
+    );
+    opacity: 0.3;
+    margin: 0;
+}
+
+html:not(.dark) .header-divider {
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--text-color-light) 20%,
+        var(--text-color-light) 80%,
+        transparent
+    );
+}
+
+.scroll-container {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.full-page-section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: var(--bg-color-dark);
+}
+
+html:not(.dark) .fixed-header {
+    background-color: var(--bg-color-light);
+}
+
+.music-photo-container {
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 1;
+    border: 2px solid var(--text-color-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+html:not(.dark) .music-photo-container {
+    border-color: var(--text-color-light);
+}
+
+.music-photo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Adjust the first section to account for fixed header */
+.first-section {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.first-section .content-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* Phone-specific: prevent scrolling only for iPhone and similar sizes */
+@media screen and (max-width: 480px) {
+    .scroll-container {
+        width: 100%;
+        height: 100vh;
+        overflow-y: auto !important;
+        position: relative !important;
+    }
+    
+    html, 
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-y: auto !important;
+        position: relative !important;
+        width: 100%;
+        height: 100%;
+        touch-action: auto !important;
+    }
+
+    .first-section,
+    .second-section,
+    .third-section {
+        width: 100%;
+        min-height: 100vh;
+        position: relative !important;
+        display: block !important;
+    }
+}
+
+/* All other devices can scroll normally */
+.scroll-container {
+    overflow-y: auto;
+}
+
+/* Add smooth scrolling to html */
+html {
+    scroll-behavior: smooth;
+}
+
+.music-section-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.music-title {
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+/* Remove fixed header styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: var(--bg-color-dark);
+    transition: background-color 0.3s ease;
+}
+
+html:not(.dark) header {
+    background-color: var(--bg-color-light);
+}
+
+/* Adjust main content to account for fixed header */
+.scroll-container {
+    padding-top: 80px; /* Adjust this value based on your header height */
+}
+
+.moving-text {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.shadows-into-light {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Keep smooth scrolling */
+.scroll-container {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        padding: 1rem;
+    }
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroll-container {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+}
+
+/* Also hide scrollbar on body and html just in case */
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+    display: none;
+}
+
+body,
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+/* Add these styles */
+.music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.music-item {
+    position: relative;
+    aspect-ratio: 16/9;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.thumbnail-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.music-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.play-button .material-symbols-outlined {
+    font-size: 4rem;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.thumbnail-container:hover .music-thumbnail {
+    transform: scale(1.05);
+}
+
+.thumbnail-container:hover .play-button {
+    opacity: 1;
+}
+
+.song-title {
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--text-color-dark);
+}
+
+html:not(.dark) .song-title {
+    color: var(--text-color-light);
+}
+
+.youtube-embed {
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+.second-section {
+    background-color: var(--bg-color-dark);
+}
+
+html:not(.dark) .second-section {
+    background-color: var(--bg-color-light);
+}
+
+/* Update music section styles */
+.music-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.music-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    gap: 4rem;
+    padding: 2rem 0;
+}
+
+.music-item {
+    width: 400px;
+    height: 225px; /* 16:9 aspect ratio */
+    border: 2px solid var(--text-color-dark);
+    overflow: hidden;
+}
+
+.thumbnail-container {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.music-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.music-info {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.song-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.song-description {
+    margin-bottom: 0.5rem;
+}
+
+.release-date {
+    font-style: italic;
+}
+
+/* Adjust for dark/light mode */
+html:not(.dark) .music-item {
+    border-color: var(--text-color-light);
+}
+
+/* Device-specific media queries */
+/* Mobile - iPhone and similar (320px - 480px) */
+@media screen and (max-width: 480px) {
+    .scroll-container {
+        width: 430px;  /* iPhone 14 Pro Max width */
+        height: 932px; /* iPhone 14 Pro Max height */
+        margin: 0 auto;
+    }
+    
+    .first-section,
+    .second-section,
+    .third-section {
+        width: 430px;
+        height: 932px;
+    }
+}
+
+/* Tablet - Current size (768px - 1024px) */
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+    .scroll-container {
+        width: 100%;
+        height: 100vh;
+    }
+    
+    .first-section,
+    .second-section,
+    .third-section {
+        width: 100%;
+        height: 100vh;
+    }
+
+}
+
+/* Desktop (1025px and above) */
+@media screen and (min-width: 1025px) {
+    .scroll-container {
+        width: 100%;
+        height: 100vh;
+    }
+    
+    .first-section,
+    .second-section,
+    .third-section {
+        width: 100%;
+        height: 100vh;
+    }
+}
+
+/* Fix for iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .scroll-container,
+    .first-section,
+    .second-section,
+    .third-section {
+        height: -webkit-fill-available;
+    }
+}
+
+/* Common phone sizes */
+/* iPhone SE, 5S, 5 */
+@media screen and (width: 320px) and (height: 568px) {
+    .scroll-container {
+        height: 568px;
+        width: 320px;
+    }
+}
+
+/* iPhone 6, 6S, 7, 8 */
+@media screen and (width: 375px) and (height: 667px) {
+    .scroll-container {
+        height: 667px;
+        width: 375px;
+    }
+}
+
+/* iPhone 6+, 7+, 8+ */
+@media screen and (width: 414px) and (height: 736px) {
+    .scroll-container {
+        height: 736px;
+        width: 414px;
+    }
+}
+
+/* iPhone X, XS, 11 Pro */
+@media screen and (width: 375px) and (height: 812px) {
+    .scroll-container {
+        height: 812px;
+        width: 375px;
+    }
+}
+
+/* iPhone XR, 11 */
+@media screen and (width: 414px) and (height: 896px) {
+    .scroll-container {
+        height: 896px;
+        width: 414px;
+    }
+}
+
+/* iPhone 12, 13, 14 */
+@media screen and (width: 390px) and (height: 844px) {
+    .scroll-container {
+        height: 844px;
+        width: 390px;
+    }
+}
+
+/* iPhone 12 Pro Max, 13 Pro Max, 14 Pro Max */
+@media screen and (width: 430px) and (height: 932px) {
+    .scroll-container {
+        height: 932px;
+        width: 430px;
+    }
+}
+
+/* Hide second page content on mobile */
+@media screen and (max-width: 480px) {
+    .second-section,
+    .third-section {
+        display: none;
+    }
+    
+    .first-section {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+/* Keep scroll snapping only for larger screens */
+@media screen and (min-width: 481px) {
+    .scroll-container {
+        scroll-snap-type: y mandatory;
+    }
+}
+
+/* Remove or modify these device-specific rules that might be causing issues */
+@media screen and (width: 430px) and (height: 932px),  /* iPhone 14 Pro Max */
+       screen and (width: 390px) and (height: 844px),  /* iPhone 14 */
+       screen and (width: 375px) and (height: 812px),  /* iPhone X/11 Pro */
+       screen and (width: 414px) and (height: 896px),  /* iPhone XR/11 */
+       screen and (width: 320px) and (height: 568px)   /* iPhone SE */ {
+    html, 
+    body {
+        overflow-y: auto !important;
+        position: relative !important;
+        touch-action: auto !important;
+    }
+
+    .scroll-container {
+        position: relative !important;
+        overflow-y: auto !important;
+    }
+
+    .second-section,
+    .third-section {
+        display: block !important;
+    }
+}
+
+/* Add iOS-specific fix */
+@supports (-webkit-touch-callout: none) {
+    .scroll-container,
+    .first-section,
+    .second-section,
+    .third-section {
+        height: -webkit-fill-available;
+        min-height: -webkit-fill-available;
+    }
+}
+
+/* Footer styles */
+footer {
+    background: transparent;
+    z-index: 1000;
+}
+
+.footer-icon {
+    transition: opacity 0.3s ease;
+    opacity: 0.7;
+}
+
+.footer-icon:hover {
+    opacity: 1;
+}
+
+.instagram-icon {
+    fill: var(--text-color-dark);
+}
+
+html:not(.dark) .instagram-icon {
+    fill: var(--text-color-light);
+}
+
+/* Footer specific styles */
+footer {
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+}
+
+html:not(.dark) footer {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+}
+
+footer input {
+    background: transparent;
+    border-bottom: 1px solid currentColor;
+    color: inherit;
+}
+
+footer input::placeholder {
+    color: currentColor;
+    opacity: 0.7;
+}
+
+footer button {
+    border-color: currentColor;
+    color: inherit;
+}
+
+@media (max-width: 768px) {
+    footer .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Icon handling - updated specificity */
+.social-icon {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+
+.social-icon img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s ease;
+}
+
+/* Light mode - explicit */
+html:not([data-theme='dark']) .light-mode-icon {
+    opacity: 1;
+    display: block;
+}
+
+html:not([data-theme='dark']) .dark-mode-icon {
+    opacity: 0;
+    display: none;
+}
+
+/* Dark mode - explicit */
+html[data-theme='dark'] .light-mode-icon {
+    opacity: 0;
+    display: none;
+}
+
+html[data-theme='dark'] .dark-mode-icon {
+    opacity: 1;
+    display: block;
+}
+
