@@ -4,6 +4,14 @@
     --text-color-light: #000000;
     --bg-color-dark: #111111;
     --text-color-dark: #ffffff;
+    --color-bg1: hsl(0, 0%, 0%);
+    --color-bg2: hsl(0, 0%, 0%);
+    --color3: 100, 100, 100;
+    --color4: 59, 130, 246;
+    --color5: 236, 72, 153;
+    --color-interactive: 150, 150, 150;
+    --circle-size: 120%;
+    --blending: screen;
 }
 
 /* Light/Dark mode themes */
@@ -15,6 +23,17 @@ html {
 html.dark {
     background-color: var(--bg-color-dark);
     color: var(--text-color-dark);
+}
+
+/* Update gradient background colors */
+html:not(.dark) .gradient-bg {
+    --color-bg1: hsl(0, 0%, 90%);
+    --color-bg2: hsl(0, 0%, 80%);
+}
+
+html.dark .gradient-bg {
+    --color-bg1: hsl(0, 0%, 0%);
+    --color-bg2: hsl(0, 0%, 0%);
 }
 
 /* General layout */
@@ -38,11 +57,13 @@ body, html {
     align-items: center;
     text-align: center;
     width: 100%;
+    position: relative;
+    z-index: 1;
 }
 
 /* Loading screen */
 .loading-screen {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -50,10 +71,18 @@ body, html {
     font-weight: bold;
     font-family: 'Shadows Into Light', cursive;
     color: var(--text-color-dark);
+    z-index: 1000;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    background: transparent;
 }
 
 body.loading {
     overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
 
 /* Text animation */
@@ -108,6 +137,7 @@ body.loading {
 
 footer {
     font-family: 'Inter', sans-serif;
+    padding: 2rem 0;
 }
 
 .custom-text {
@@ -124,13 +154,17 @@ footer {
     opacity: 0.8;
 }
 
+/* Consistent header and footer line styling */
 .header-line {
-    width: 100%;
+    width: 90%;
+    max-width: 1200px;
     border: none;
     height: 1px;
     background-color: var(--text-color-dark);
-    margin: 0;
+    margin: -0.25rem auto 1rem;  /* Negative top margin to pull it up */
     opacity: 0.3;
+    position: relative;  /* Added position relative */
+    top: -5px;  /* Pull up slightly */
 }
 
 html.dark .header-line {
@@ -144,14 +178,8 @@ html:not(.dark) .header-line {
 .header-divider {
     width: 100%;
     height: 1px;
-    background: linear-gradient(
-        to right,
-        transparent,
-        var(--text-color-dark) 20%,
-        var(--text-color-dark) 80%,
-        transparent
-    );
-    opacity: 0.3;
+    background: transparent;
+    border-top: 1px solid currentColor;
     margin: 0;
 }
 
@@ -273,6 +301,14 @@ html:not(.dark) .music-photo-container {
         position: relative !important;
         display: block !important;
     }
+
+    .loading-screen {
+        font-size: 2rem;
+    }
+    
+    body.loading {
+        touch-action: none;
+    }
 }
 
 /* All other devices can scroll normally */
@@ -307,12 +343,11 @@ header {
     left: 0;
     right: 0;
     z-index: 1000;
-    background-color: var(--bg-color-dark);
     transition: background-color 0.3s ease;
 }
 
 html:not(.dark) header {
-    background-color: var(--bg-color-light);
+    background-color: transparent;
 }
 
 /* Adjust main content to account for fixed header */
@@ -349,7 +384,12 @@ html:not(.dark) header {
 
 @media (max-width: 768px) {
     .header-content {
-        padding: 1rem;
+        padding: 1rem;  /* Adjust padding for mobile */
+    }
+    
+    /* Add more space between header and line on mobile */
+    .header-line {
+        margin-top: 0.4rem;  /* Add space below header content */
     }
 }
 
@@ -445,14 +485,6 @@ html:not(.dark) .song-title {
 .youtube-embed {
     width: 100%;
     aspect-ratio: 16/9;
-}
-
-.second-section {
-    background-color: var(--bg-color-dark);
-}
-
-html:not(.dark) .second-section {
-    background-color: var(--bg-color-light);
 }
 
 /* Update music section styles */
@@ -707,39 +739,6 @@ html:not(.dark) .instagram-icon {
     fill: var(--text-color-light);
 }
 
-/* Footer specific styles */
-footer {
-    background-color: var(--bg-color-dark);
-    color: var(--text-color-dark);
-}
-
-html:not(.dark) footer {
-    background-color: var(--bg-color-light);
-    color: var(--text-color-light);
-}
-
-footer input {
-    background: transparent;
-    border-bottom: 1px solid currentColor;
-    color: inherit;
-}
-
-footer input::placeholder {
-    color: currentColor;
-    opacity: 0.7;
-}
-
-footer button {
-    border-color: currentColor;
-    color: inherit;
-}
-
-@media (max-width: 768px) {
-    footer .grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* Icon handling - updated specificity */
 .social-icon {
     position: relative;
@@ -779,3 +778,206 @@ html[data-theme='dark'] .dark-mode-icon {
     display: block;
 }
 
+/* Gradient Background Styles */
+.gradient-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    overflow: hidden;
+    background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+svg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+}
+
+.gradients-container {
+    filter: url(#goo) blur(40px);
+    width: 100%;
+    height: 100%;
+}
+
+.g3, .g4, .g5 {
+    position: absolute;
+    background: radial-gradient(circle at center, rgba(var(--color3), 0.5) 0, rgba(var(--color3), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: var(--circle-size);
+    height: var(--circle-size);
+    transform-origin: center center;
+}
+
+.g4 {
+    background: radial-gradient(circle at center, rgba(var(--color3), 0.5) 0, rgba(var(--color3), 0) 50%);
+    transform-origin: calc(50% - 200px);
+    animation: moveHorizontal 40s ease infinite;
+}
+
+.g5 {
+    background: radial-gradient(circle at center, rgba(var(--color3), 0.5) 0, rgba(var(--color3), 0) 50%);
+    width: calc(var(--circle-size) * 2.5);
+    height: calc(var(--circle-size) * 2.5);
+    top: calc(50% - var(--circle-size));
+    left: calc(50% - var(--circle-size));
+    transform-origin: calc(50% - 800px) calc(50% + 200px);
+    animation: moveInCircle 20s ease infinite;
+}
+
+.interactive {
+    position: absolute;
+    background: radial-gradient(circle at center, rgba(var(--color3), 0.6) 0, rgba(var(--color3), 0) 50%) no-repeat;
+    mix-blend-mode: var(--blending);
+    width: 150%;
+    height: 150%;
+    top: -50%;
+    left: -50%;
+    opacity: 0.8;
+}
+
+/* Animation Keyframes */
+@keyframes moveInCircle {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes moveVertical {
+    0% {
+        transform: translateY(-50%);
+    }
+    50% {
+        transform: translateY(50%);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes moveHorizontal {
+    0% {
+        transform: translateX(-50%) translateY(-10%);
+    }
+    50% {
+        transform: translateX(50%) translateY(10%);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-10%);
+    }
+}
+
+/* Ensure content stays above background */
+#root {
+    position: relative;
+    z-index: 1;
+}
+
+/* Update loading screen to be visible above background */
+.loading-screen {
+    z-index: 2;
+}
+
+/* Adjust footer spacing and icon positioning */
+footer {
+    padding: 2rem 0;
+}
+
+.social-icons {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.social-icon {
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon:hover {
+    opacity: 1;
+}
+
+/* Mobile-specific fixes */
+@media screen and (max-width: 480px) {
+    /* Enable all sections on mobile */
+    .second-section,
+    .third-section {
+        display: block !important;
+    }
+    
+    /* Adjust music row layout for mobile */
+    .music-row {
+        flex-direction: column;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Adjust music item size for mobile */
+    .music-item {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+    }
+
+    /* Center music info on mobile */
+    .music-info {
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Adjust song title size for mobile */
+    .song-title {
+        font-size: 1.5rem;
+        margin: 0.5rem 0;
+    }
+
+    /* Remove fixed positioning on mobile */
+    .scroll-container {
+        position: relative;
+        height: auto;
+        overflow-y: visible;
+    }
+
+    /* Adjust section heights for mobile */
+    .full-page-section {
+        height: auto;
+        min-height: 100vh;
+        padding: 4rem 0;
+    }
+
+    /* Ensure content wrapper has proper padding */
+    .content-wrapper {
+        padding: 1rem;
+    }
+
+    /* Adjust header for mobile */
+    .header-content {
+        padding: 0.5rem 1rem;
+    }
+
+    /* Adjust logo text size for mobile */
+    .logo-text {
+        font-size: 1.5rem;
+    }
+
+    /* Remove any scroll snapping on mobile */
+    html, 
+    body,
+    .scroll-container {
+        scroll-snap-type: none;
+        overflow-y: auto !important;
+        height: auto;
+    }
+}

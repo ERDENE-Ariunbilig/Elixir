@@ -4,22 +4,16 @@ const musicContent = [
         title: "Emira - CHI",
         thumbnail: `https://img.youtube.com/vi/fk3m10VDf8A/hqdefault.jpg`,
         youtubeLink: "https://youtu.be/fk3m10VDf8A",
-        description: "description...",
-        releaseDate: "Release date"
     },
     {
         title: "Emira - Setgel",
         thumbnail: `https://img.youtube.com/vi/hgVXBWVm824/hqdefault.jpg`,
         youtubeLink: "https://youtu.be/hgVXBWVm824",
-        description: "description...",
-        releaseDate: "Release date"
     },
     {
         title: "Emira - 7AM",
         thumbnail: `https://img.youtube.com/vi/2giSYHljK3Q/hqdefault.jpg`,
         youtubeLink: "https://youtu.be/2giSYHljK3Q",
-        description: "description...",
-        releaseDate: "Release date"
     }
 ];
 
@@ -129,7 +123,7 @@ class App {
                         </button>
                     </div>
                 </div>
-                <div class="header-divider"></div>
+                <div class="header-line"></div>
             </header>
 
             <!-- First Page -->
@@ -161,15 +155,11 @@ class App {
                                             </a>
                                         </div>
                                         <div class="music-info shadows-into-light">
-                                            <h3 class="song-title">${song.title}</h3>
-                                            <p class="song-description">${song.description}</p>
-                                            <p class="release-date">${song.releaseDate}</p>
+                                            <h3 class="song-title whitespace-nowrap">${song.title || ''}</h3>
                                         </div>
                                     ` : `
                                         <div class="music-info shadows-into-light">
-                                            <h3 class="song-title">${song.title}</h3>
-                                            <p class="song-description">${song.description}</p>
-                                            <p class="release-date">${song.releaseDate}</p>
+                                            <h3 class="song-title whitespace-nowrap">${song.title || ''}</h3>
                                         </div>
                                         <div class="music-item">
                                             <a href="${song.youtubeLink}" target="_blank" class="thumbnail-container">
@@ -192,7 +182,7 @@ class App {
             </section>
 
             <footer class="py-12 px-8">
-                <div class="header-divider mb-8"></div>
+                <div class="header-line"></div>
                 <div class="max-w-6xl mx-auto flex flex-col items-center justify-center">
                     <div class="flex space-x-6 mb-4">
                         <a href="https://www.instagram.com/elixir_recordsofficial" target="_blank" class="hover:opacity-70 cursor-pointer">
@@ -252,7 +242,6 @@ class Main {
     }
 }
 
-// Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     const main = new Main();
     main.render();
