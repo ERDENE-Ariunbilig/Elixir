@@ -251,8 +251,6 @@ html:not(.dark) .music-photo-container {
     align-items: center;
     justify-content: center;
 }
-
-/* Adjust the first section to account for fixed header */
 .first-section {
     height: 100vh;
     width: 100vw;
@@ -273,7 +271,8 @@ html:not(.dark) .music-photo-container {
     padding: 0 20px;
 }
 
-/* Phone-specific: prevent scrolling only for iPhone and similar sizes */
+/* Phone-specific: prevent scrolling*/
+
 @media screen and (max-width: 480px) {
     .scroll-container {
         width: 100%;
@@ -311,12 +310,12 @@ html:not(.dark) .music-photo-container {
     }
 }
 
-/* All other devices can scroll normally */
+/* All other devices scroll normally */
 .scroll-container {
     overflow-y: auto;
 }
 
-/* Add smooth scrolling to html */
+/* smooth scrolling */
 html {
     scroll-behavior: smooth;
 }
@@ -335,8 +334,6 @@ html {
     font-size: 2rem;
     margin-top: 1rem;
 }
-
-/* Remove fixed header styles */
 header {
     position: fixed;
     top: 0;
@@ -349,8 +346,6 @@ header {
 html:not(.dark) header {
     background-color: transparent;
 }
-
-/* Adjust main content to account for fixed header */
 .scroll-container {
     padding-top: 80px; /* Adjust this value based on your header height */
 }
@@ -386,25 +381,22 @@ html:not(.dark) header {
     .header-content {
         padding: 1rem;  /* Adjust padding for mobile */
     }
-    
-    /* Add more space between header and line on mobile */
     .header-line {
         margin-top: 0.4rem;  /* Add space below header content */
     }
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+/* Hide scrollbar Chrome, Safari, Opera */
 .scroll-container::-webkit-scrollbar {
     display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
+/* Hide scrollbar IE, Edge, Firefox */
 .scroll-container {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;     /* Firefox */
 }
 
-/* Also hide scrollbar on body and html just in case */
 body::-webkit-scrollbar,
 html::-webkit-scrollbar {
     display: none;
@@ -487,7 +479,6 @@ html:not(.dark) .song-title {
     aspect-ratio: 16/9;
 }
 
-/* Update music section styles */
 .music-content {
     width: 100%;
     max-width: 1200px;
@@ -541,13 +532,13 @@ html:not(.dark) .song-title {
     font-style: italic;
 }
 
-/* Adjust for dark/light mode */
+/* dark/light mode adjust... */
 html:not(.dark) .music-item {
     border-color: var(--text-color-light);
 }
 
 /* Device-specific media queries */
-/* Mobile - iPhone and similar (320px - 480px) */
+/* Mobile - iPhone, smooll(320px - 480px) */
 @media screen and (max-width: 480px) {
     .scroll-container {
         width: 430px;  /* iPhone 14 Pro Max width */
@@ -563,7 +554,7 @@ html:not(.dark) .music-item {
     }
 }
 
-/* Tablet - Current size (768px - 1024px) */
+/* Tablet - size (768px - 1024px) */
 @media screen and (min-width: 481px) and (max-width: 1024px) {
     .scroll-container {
         width: 100%;
@@ -579,7 +570,7 @@ html:not(.dark) .music-item {
 
 }
 
-/* Desktop (1025px and above) */
+/* Desktop 1025px*/
 @media screen and (min-width: 1025px) {
     .scroll-container {
         width: 100%;
@@ -593,8 +584,6 @@ html:not(.dark) .music-item {
         height: 100vh;
     }
 }
-
-/* Fix for iOS Safari */
 @supports (-webkit-touch-callout: none) {
     .scroll-container,
     .first-section,
@@ -962,17 +951,17 @@ footer {
         padding: 1rem;
     }
 
-    /* Adjust header for mobile */
+    /* header for mobile */
     .header-content {
         padding: 0.5rem 1rem;
     }
 
-    /* Adjust logo text size for mobile */
+    /* logo text size for mobile */
     .logo-text {
         font-size: 1.5rem;
     }
 
-    /* Remove any scroll snapping on mobile */
+    /* Remove any scroll snapping on mobile 😭 */
     html, 
     body,
     .scroll-container {
