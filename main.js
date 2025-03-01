@@ -1,4 +1,7 @@
+// Artists data for loading screen
 const artists = ["RARI", "EMURACS", "SITAN", "SANDAN", "BELLATTIX", "AKMET"];
+
+// Music content data
 const musicContent = [
     {
         title: "Emira - CHI",
@@ -17,6 +20,7 @@ const musicContent = [
     }
 ];
 
+// Loading Screen Component - handles initial loading animation
 class LoadingScreen {
     constructor() {
         this.element = document.createElement('div');
@@ -44,6 +48,7 @@ class LoadingScreen {
     }
 }
 
+// Dark Mode Toggle Component - handles theme switching
 class DarkModeToggle {
     constructor() {
         this.isDarkMode = true;
@@ -51,20 +56,28 @@ class DarkModeToggle {
         this.button.className = 'p-2 border border-gray-700 rounded-full text-lg flex items-center dark-mode-toggle';
         this.button.setAttribute('aria-label', 'Toggle dark/light mode');
         
-        // Use requestAnimationFrame for smoother transitions
-        this.button.addEventListener('click', () => {
-            requestAnimationFrame(() => this.toggle());
-        });
-        
+        this.button.addEventListener('click', () => this.toggle());
         this.updateButton();
     }
 
+    // Handles dark/light mode switching
     toggle() {
         this.isDarkMode = !this.isDarkMode;
+        
+        // Add transition class before changing dark mode
+        document.documentElement.classList.add('transitioning');
         document.documentElement.classList.toggle('dark', this.isDarkMode);
+        
+        // Update button icon
         this.updateButton();
+        
+        // Remove transition class after animation completes
+        setTimeout(() => {
+            document.documentElement.classList.remove('transitioning');
+        }, 300); // Match this with CSS transition duration
     }
 
+    // Updates button icon based on current theme
     updateButton() {
         this.button.innerHTML = `
             <span class="material-symbols-outlined">
@@ -78,6 +91,7 @@ class DarkModeToggle {
     }
 }
 
+// Main App Component - handles overall layout and content
 class App {
     constructor() {
         this.element = document.createElement('div');
@@ -214,13 +228,14 @@ class App {
     }
 }
 
+// Main Controller - handles app initialization and loading state
 class Main {
     constructor() {
         this.loading = true;
         this.loadingScreen = new LoadingScreen();
         this.app = new App();
         
-        // Initial dark mode
+        // Set initial dark mode
         document.documentElement.classList.add('dark');
         
         // Handle loading state
@@ -232,6 +247,7 @@ class Main {
         }, 3000);
     }
 
+    // Renders either loading screen or main app
     render() {
         const root = document.getElementById('root');
         root.innerHTML = '';
@@ -246,6 +262,7 @@ class Main {
     }
 }
 
+// Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
     const main = new Main();
     main.render();
