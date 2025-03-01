@@ -12,6 +12,8 @@
     --color-interactive: 150, 150, 150;
     --circle-size: 120%;
     --blending: screen;
+    --transition-duration: 0.5s;
+    --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Light/Dark mode themes */
@@ -142,16 +144,34 @@ footer {
 
 .custom-text {
     font-size: 2rem;
-    color: grey;
+    color: var(--text-color-dark);
+    opacity: 0.5;
+    transition: 
+        color var(--transition-duration) var(--transition-timing),
+        opacity var(--transition-duration) var(--transition-timing);
 }
 
+html:not(.dark) .custom-text {
+    color: var(--text-color-light);
+}
+
+/* Update logo text styles */
 .logo-text {
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    color: var(--text-color-dark);
+    transition: 
+        color var(--transition-duration) var(--transition-timing),
+        opacity var(--transition-duration) var(--transition-timing);
 }
 
-.logo-text:hover {
-    opacity: 0.8;
+/* Light mode specific styles for logo */
+html:not(.dark) .logo-text {
+    color: var(--text-color-light);
+}
+
+/* Dark mode specific styles for logo */
+html.dark .logo-text {
+    color: var(--text-color-dark);
 }
 
 /* Consistent header and footer line styling */
@@ -777,6 +797,10 @@ html[data-theme='dark'] .dark-mode-icon {
     top: 0;
     left: 0;
     z-index: -1;
+    transition: 
+        background var(--transition-duration) var(--transition-timing),
+        --color-bg1 var(--transition-duration) var(--transition-timing),
+        --color-bg2 var(--transition-duration) var(--transition-timing);
 }
 
 svg {
@@ -969,4 +993,101 @@ footer {
         overflow-y: auto !important;
         height: auto;
     }
+}
+
+/* Update transition definitions for dark/light mode */
+:root {
+    --transition-duration: 0.5s; /* Increased from 0.3s to 0.5s for smoother transition */
+    --transition-timing: cubic-bezier(0.4, 0, 0.2, 1); /* Added smooth easing function */
+}
+
+/* Apply consistent transitions to all elements that change with theme */
+*,
+*::before,
+*::after {
+    transition: 
+        color var(--transition-duration) var(--transition-timing),
+        background-color var(--transition-duration) var(--transition-timing),
+        border-color var(--transition-duration) var(--transition-timing),
+        opacity var(--transition-duration) var(--transition-timing),
+        text-color var(--transition-duration) var(--transition-timing);
+}
+
+/* Specific optimized transitions */
+body {
+    transition: 
+        background-color var(--transition-duration) var(--transition-timing),
+        color var(--transition-duration) var(--transition-timing);
+}
+
+.gradient-bg {
+    transition: 
+        background var(--transition-duration) var(--transition-timing),
+        --color-bg1 var(--transition-duration) var(--transition-timing),
+        --color-bg2 var(--transition-duration) var(--transition-timing);
+}
+
+/* Optimize image transitions */
+img {
+    transition: 
+        opacity var(--transition-duration) var(--transition-timing),
+        transform var(--transition-duration) var(--transition-timing);
+}
+
+/* Keep smooth icon rotation separate */
+.material-symbols-outlined {
+    transition: transform calc(var(--transition-duration) * 1.2) var(--transition-timing);
+}
+
+.dark-mode-toggle:hover .material-symbols-outlined {
+    transform: rotate(360deg);
+}
+
+/* Remove any conflicting individual transition definitions */
+body,
+.header-content,
+.header-line,
+button,
+a,
+.music-thumbnail,
+.music-info,
+.song-title,
+img {
+    /* Remove individual transition definitions as they're now handled by the universal selector */
+}
+
+/* Update text color transitions for main content */
+.moving-text span,
+.shadows-into-light,
+.protest-revolution {
+    color: var(--text-color-dark);
+    transition: color var(--transition-duration) var(--transition-timing);
+}
+
+/* Light mode text colors */
+html:not(.dark) .moving-text span,
+html:not(.dark) .shadows-into-light,
+html:not(.dark) .protest-revolution {
+    color: var(--text-color-light);
+}
+
+/* Dark mode text colors */
+html.dark .moving-text span,
+html.dark .shadows-into-light,
+html.dark .protest-revolution {
+    color: var(--text-color-dark);
+}
+
+/* Update custom text color */
+.custom-text {
+    font-size: 2rem;
+    color: var(--text-color-dark);
+    opacity: 0.5;
+    transition: 
+        color var(--transition-duration) var(--transition-timing),
+        opacity var(--transition-duration) var(--transition-timing);
+}
+
+html:not(.dark) .custom-text {
+    color: var(--text-color-light);
 }

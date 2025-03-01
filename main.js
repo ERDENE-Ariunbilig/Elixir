@@ -48,7 +48,7 @@ class DarkModeToggle {
     constructor() {
         this.isDarkMode = true;
         this.button = document.createElement('button');
-        this.button.className = 'p-2 border border-gray-700 rounded-full text-lg flex items-center';
+        this.button.className = 'p-2 border border-gray-700 rounded-full text-lg flex items-center dark-mode-toggle';
         this.button.setAttribute('aria-label', 'Toggle dark/light mode');
         
         this.button.addEventListener('click', () => this.toggle());
@@ -57,8 +57,18 @@ class DarkModeToggle {
 
     toggle() {
         this.isDarkMode = !this.isDarkMode;
+        
+        // Add transition class before changing dark mode
+        document.documentElement.classList.add('transitioning');
         document.documentElement.classList.toggle('dark', this.isDarkMode);
+        
+        // Update button icon
         this.updateButton();
+        
+        // Remove transition class after animation completes
+        setTimeout(() => {
+            document.documentElement.classList.remove('transitioning');
+        }, 300); // Match this with CSS transition duration
     }
 
     updateButton() {
