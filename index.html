@@ -9,6 +9,9 @@
 
     <base href="/Elixir/">
     
+    <!-- Force full-scale rendering -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
     <!-- Preload critical resources -->
     <link rel="preload" href="/Elixir/assets/logo-mro9V4qJ.png" as="image" />
     <link rel="preload" href="data:text/jsx;base64,aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0Jw0KaW1wb3J0IFJlYWN0RE9NIGZyb20gJ3JlYWN0LWRvbS9jbGllbnQnDQppbXBvcnQgQXBwIGZyb20gJy4vQXBwLmpzeCcNCmltcG9ydCAnLi9pbmRleC5jc3MnDQoNCi8vIFJlbGF0aXZlIFVSTCBiYXNlDQpjb25zdCBiYXNlVXJsID0gIi9FbGl4aXIvIjsNCg0KUmVhY3RET00uY3JlYXRlUm9vdChkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncm9vdCcpKS5yZW5kZXIoDQogIDxSZWFjdC5TdHJpY3RNb2RlPg0KICAgIDxBcHAgLz4NCiAgPC9SZWFjdC5TdHJpY3RNb2RlPiwNCikNCg==" as="script" />
@@ -42,9 +45,25 @@
     <link rel="preload" href="https://fonts.gstatic.com/s/protestrevolution/v1/5h1mipRGOKH_UDeL2dKYCKbA4TLvRQZOjkD-VPQ.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://fonts.gstatic.com/s/shadowsintolight/v15/UqyNK9UOIntux_czAvDQx_ZcHqZXBNQzdcD5.woff2" as="font" type="font/woff2" crossorigin>
   
-    <script type="module" crossorigin src="/Elixir/assets/index-DKPu38X0.js"></script>
+    <!-- Font loading detection -->
+    <style>
+      .fonts-loaded .moving-text {
+        opacity: 1;
+      }
+      .moving-text {
+        opacity: 0.9;
+        transition: opacity 0.5s ease;
+      }
+    </style>
+    <script>
+      document.fonts.ready.then(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      });
+    </script>
+
+    <script type="module" crossorigin src="/Elixir/assets/index-D8qGzs9O.js"></script>
     <link rel="modulepreload" crossorigin href="/Elixir/assets/vendor-CMmhtoO5.js">
-    <link rel="stylesheet" crossorigin href="/Elixir/assets/index-B_eXZQHF.css">
+    <link rel="stylesheet" crossorigin href="/Elixir/assets/index-OgVdFZtu.css">
   </head>
   <body>
 
